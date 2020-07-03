@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using loja.Data;
 using loja.Repository;
+using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 
 namespace loja
 {
@@ -24,6 +25,12 @@ namespace loja
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<ITelefoneRepository, TelefoneRepository>();
 
+            // In production, the React files will be served from this directory
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "ClientApp/build";
+            });
+
             services.AddMvc(options => options.EnableEndpointRouting = false);
         }
 
@@ -35,7 +42,19 @@ namespace loja
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+            app.UseSpaStaticFiles();
+
             app.UseMvc();
+
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "ClientApp";
+                if (env.IsDevelopment())
+                {
+                    spa.UseReactDevelopmentServer(npmScript: "start");
+                }
+            });
 
         }
     }
