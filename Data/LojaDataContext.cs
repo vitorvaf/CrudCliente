@@ -12,7 +12,7 @@ namespace loja.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseSqlServer("Server=localhost; Database=loja; user id=SA; password=dovJayk7");
+            options.UseSqlServer("Server=localhost; Database=loja; user id=SA; password="");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
