@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using loja.Models;
 
 namespace loja.Repository
@@ -17,6 +18,8 @@ namespace loja.Repository
         Cliente Editar (Cliente cliente);
 
         bool Deletar(int id);        
+
+        IQueryable<Cliente> Query();
         
     }
 }

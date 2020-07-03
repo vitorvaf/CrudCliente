@@ -66,6 +66,11 @@ namespace loja.Repository
                 .Where(clientes=> clientes.CPF == cpf)
                 .FirstOrDefault();
         }
+
+        public IQueryable<Cliente> Query()
+        {
+            return _context.Clientes.AsQueryable();
+        }
     }
 
 

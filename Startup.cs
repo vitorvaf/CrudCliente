@@ -9,17 +9,22 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using loja.Data;
+using loja.Repository;
 
 namespace loja
 {
     public class Startup
-    {        
+    {
 
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<LojaDataContext,LojaDataContext>();
+            services.AddScoped<LojaDataContext, LojaDataContext>();
+            services.AddScoped<IClienteRepository, ClienteRepository>();
+            services.AddScoped<ITelefoneRepository, TelefoneRepository>();
+
+            services.AddMvc(options => options.EnableEndpointRouting = false);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -31,7 +36,7 @@ namespace loja
             }
 
             app.UseMvc();
-            
+
         }
     }
 }

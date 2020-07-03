@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using loja.Models;
 using loja.Data;
-using System.Linq;
 
 namespace loja.Repository
 {
@@ -53,6 +53,11 @@ namespace loja.Repository
                 .Where(telefones => telefones.ClienteId == idCliente)
                 .ToList();           
             
+        }
+
+        public IQueryable<Telefone> Query()
+        {
+            return _context.Telefones.AsQueryable();
         }
     }
 }

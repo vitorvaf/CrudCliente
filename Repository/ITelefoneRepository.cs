@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using loja.Models;
 
 namespace loja.Repository
@@ -12,7 +13,11 @@ namespace loja.Repository
 
         Telefone Editar(Telefone telefone);
 
-        bool Deletar(int id);        
+        bool Deletar(int id);   
+
+        IQueryable<Telefone> Query();
+
+
         
     }
 }
