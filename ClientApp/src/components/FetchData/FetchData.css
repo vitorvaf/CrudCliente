@@ -1,0 +1,9 @@
+.container{
+    display: flex;
+}
+
+.headTable {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}

@@ -24,7 +24,7 @@ namespace loja.Models
         [MaxLength(18, ErrorMessage="Dados do CNPJ do incorretos")]
         public string CNPJ { get; set; }
         
-        [MaxLength(8)]
+        [MaxLength(9)]
         public string Cep { get; set; }                
         
         [Required(ErrorMessage="Por favor, informe o email do cliente")]

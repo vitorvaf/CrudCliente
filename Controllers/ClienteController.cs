@@ -20,8 +20,9 @@ namespace loja.Controllers
         }
 
         [HttpPost]
-        public IActionResult Cadastrar(Cliente cliente)
+        public IActionResult Cadastrar([FromBody]Cliente cliente)
         {
+            Console.WriteLine("chegou por aqui: " +  DateTime.Now.ToLongTimeString());
             if(!ModelState.IsValid)
             {
                 return BadRequest("erro: requisição inválida");
@@ -32,15 +33,15 @@ namespace loja.Controllers
         }
 
 
-        [HttpGet]
+        [HttpGet("listar")]
         public IActionResult Listar()
-        {
+        {            
             var listaClientes = _repository.Listar();
             return Ok(listaClientes);
             
         }
 
-        [HttpGet]
+        [HttpGet("buscaporcpf")]
         public IActionResult BuscarPorCpf(string cpf)
         {
             var cliente = _repository.ListarPorCpf(cpf);
@@ -54,7 +55,7 @@ namespace loja.Controllers
         }
 
 
-        [HttpGet]
+        [HttpGet("buscasporcnpj")]
         public IActionResult BuscarPorCnpj(string cnpj)
         {
             var cliente = _repository.ListarPorCNPJ(cnpj);
@@ -69,7 +70,7 @@ namespace loja.Controllers
 
 
         [HttpPut]
-        public IActionResult Editar(Cliente cliente)
+        public IActionResult Editar([FromBody]Cliente cliente)
         {
             if(!ModelState.IsValid)
             {

@@ -30,7 +30,7 @@ namespace loja.Controllers
         }
         
         [HttpPost]
-        public IActionResult Cadastrar(Telefone telefone)
+        public IActionResult Cadastrar([FromBody]Telefone telefone)
         {
             if(ModelState.IsValid)
             {
@@ -43,7 +43,7 @@ namespace loja.Controllers
         }
 
         [HttpPut]
-        public IActionResult Editar(Telefone telefone)
+        public IActionResult Editar([FromBody]Telefone telefone)
         {
             if(ModelState.IsValid)
                 return BadRequest();
