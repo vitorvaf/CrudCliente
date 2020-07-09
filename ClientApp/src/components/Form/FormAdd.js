@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Form, FormGroup, Label, Input } from "reactstrap";
+import { Form, FormGroup, Label, Button,Alert, Input } from "reactstrap";
+import { Link } from 'react-router-dom';
 import InputMask from "react-input-mask";
 
 export default class FormAdd extends Component {
   static displayName = Form.name;
-  
 
   constructor(props) {
     super(props);
@@ -80,18 +80,16 @@ export default class FormAdd extends Component {
       .then((response) => {
         console.error(response);
         alert(response.statusText);
-        return response;
+        window.location.replace("https://localhost:5001/");
       })
       .catch((err) => {
         alert(err);
       });
   };
-  
 
   render() {
-    
     return (
-      <Form>
+      <Form>      
         <FormGroup>
           <h1>Novo Cliente</h1>
         </FormGroup>
@@ -173,9 +171,17 @@ export default class FormAdd extends Component {
             onChange={this.handleChange}
             placeholder="informe o email"
             value={this.state.email}
-          />          
+          />
         </FormGroup>
-        <Input type="button" onClick={this.handleSubmit} value="cadastrar" />
+        <FormGroup className="row justify-content-md-center">
+          <Button onClick={this.handleSubmit} color="primary" size="lg">
+            Cadastrar
+          </Button>{" "}
+          <Link className="btn btn-secondary btn-lg" to="/" >
+            Cancelar
+          </Link>
+        </FormGroup>
+        {/* <Input type="button" onClick={this.handleSubmit} value="cadastrar" /> */}
       </Form>
     );
   }
